@@ -1,0 +1,64 @@
+{
+  "schema_dic_en": {
+    "Nodes": {
+      "chairman": "{'tag': 'chairman', 'properties': [('name', 'string'), ('sex', 'string'), ('appointment_date', 'string'), ('departure_date', 'string')]}",
+      "manager": "{'tag': 'manager', 'properties': [('name', 'string'), ('sex', 'string'), ('degree', 'string')]}",
+      "industry": "{'tag': 'industry', 'properties': [('name', 'string'), ('scale', 'float')]}",
+      "information": "{'tag': 'information', 'properties': [('name', 'string')#名称,('id', 'string'), ('name', 'string')]}",
+      "new_stock": "{'tag': 'new_stock', 'properties': [('name', 'string'), ('code', 'string'), ('amount', 'int64'), ('online_release_date', 'string')]}",
+      "fund": "{'tag': 'fund', 'properties': [('code', 'string'), ('name', 'string'), ('sales_status', 'string'), ('management_fee', 'float'), ('scale', 'float'), ('subscription_start_time', 'datetime'), ('subscription_end_time', 'datetime'), ('net_worth', 'float')]}",
+      "stock": "{'tag': 'stock', 'properties': [('code', 'string'), ('name', 'string'), ('chinese_spelling', 'string'), ('registered_capital', 'float'), ('listed_sector', 'string'), ('establishment_date', 'date'), ('province', 'string')]}",
+      "stock_data": "{'tag': 'stock_data', 'properties': [('date', 'date'), ('opening_price', 'float'), ('closing_price', 'float'), ('maximum_price', 'float'), ('minimum_price', 'float'), ('range', 'float'), ('volume', 'int64'), ('raising_limit_days', 'int64'), ('raising_limit', 'bool'), ('hong_san_bing', 'bool')]}",
+      "stock_financial_information": "{'tag': 'stock_financial_information', 'properties': [('date', 'date'), ('type', 'string'), ('year', 'int64'), ('half_year', 'int64'), ('quarter', 'int64'), ('net_profit', 'float'), ('inventory_turnover', 'float')]}",
+      "stockholder": "{'tag': 'stockholder', 'properties': [('name', 'string')]}",
+      "trade": "{'tag': 'trade', 'properties': [('code', 'string'), ('name', 'string')]}",
+      "trade_data": "{'tag': 'trade_data', 'properties': [('date', 'date'), ('opening_price', 'float'), ('closing_price', 'float'), ('maximum_price', 'float'), ('minimum_price', 'float'), ('range', 'float')]}"
+    },
+    "Relations": {
+      "originate_from": "{'edge': 'originate_from','start_tag':'stock','end_tag':'new_stock', 'properties': ['marketing_time']}",
+      "is_chairman_of": "{'edge': 'is_chairman_of', 'start_tag':'chairman','end_tag':'stock','properties': []}",
+      "is_stockholder_of": "{'edge': 'is_stockholder_of','start_tag':'stockholder','end_tag':'stock', 'properties': ['shareholding_ratio','circulation_shareholding_ratio']}",
+      "belong_to": "{'edge': 'belong_to', 'start_tag':'stock','end_tag':'trade','properties': []}",
+      "hold": "{'edge': 'hold','start_tag':'fund','end_tag':'stock', 'properties': ['position_ratio','position_amount']}",
+      "manage": "{'edge': 'manage','start_tag':'manager','end_tag':'fund', 'properties': []}",
+      "involve_stock": "{'edge': 'involve_stock', 'start_tag':'stock','end_tag':'information','properties': ['tendency']}",
+      "involve_fund": "{'edge': 'involve_fund', 'start_tag':'fund','end_tag':'information','properties': ['tendency']}",
+      "associate": "{'edge': 'associate', 'start_tag':'stock','end_tag':'industry','properties': []}",
+      "affect": "{'edge': 'affect', 'start_tag':'industry','end_tag':'industry','properties': []}",
+      "has_stock_data": "{'edge': 'has_stock_data', 'start_tag':'stock','end_tag':'stock_data','properties': []}",
+      "has_stock_financial_information": "{'edge': 'has_stock_financial_information','start_tag':'stock','end_tag':'stock_financial_information', 'properties': []}",
+      "has_trade_data": "{'edge': 'has_trade_data','start_tag':'trade','end_tag':'trade_data', 'properties': []}"
+    }
+  }, 
+  "schema_dic_cn": {
+    "Nodes": {
+      "chairman": "{'tag': 'chairman'#董事长, 'properties': [('name', 'string')#姓名, ('sex', 'string')#性别, ('appointment_date', 'string')#任职日期, ('departure_date', 'string')#离职日期]}",
+      "manager": "{'tag': 'manager'#基金经理人, 'properties': [('name', 'string')#姓名, ('sex', 'string')#性别, ('degree', 'string')#学历]}",
+      "industry": "{'tag': 'industry'#产业, 'properties': [('name', 'string')#名称, ('scale', 'float')#规模]}",
+      "information": "{'tag': 'information'#资讯, 'properties': [('name', 'string')#名称,('id', 'string')#id, ('name', 'string')#名称]}",
+      "new_stock": "{'tag': 'new_stock'#新股, 'properties': [('name', 'string')#名字, ('code', 'string')#发行代码, ('amount', 'int64')#发行数量, ('online_release_date', 'string')#网上发行日期]}",
+      "fund": "{'tag': 'fund'#公募基金, 'properties': [('code', 'string')#基金代码, ('name', 'string')#基金名称, ('sales_status', 'string')#销售状态, ('management_fee', 'float')#管理费, ('scale', 'float')#规模, ('subscription_start_time', 'datetime')#认购开始时间, ('subscription_end_time', 'datetime')#认购结束时间, ('net_worth', 'float')#净值]}",
+      "stock": "{'tag': 'stock'#股票, 'properties': [('code', 'string')#股票代码, ('name', 'string')#股票名称, ('chinese_spelling', 'string')#股票名称拼音, ('registered_capital', 'float')#注册资本, ('listed_sector', 'string')#上市板块, ('establishment_date', 'date')#成立日期, ('province', 'string')#省份]}",
+      "stock_data": "{'tag': 'stock_data'#股票数据, 'properties': [('date', 'date')#时间, ('opening_price', 'float')#开盘价, ('closing_price', 'float')#收盘价, ('maximum_price', 'float')#最高价, ('minimum_price', 'float')#最低价, ('range', 'float')#涨跌幅, ('volume', 'int64')#成交量, ('raising_limit_days', 'int64')#涨停连板天数, ('raising_limit', 'bool')#涨停, ('hong_san_bing', 'bool')#红三兵]}",
+      "stock_financial_information": "{'tag': 'stock_financial_information'#股票财务信息, 'properties': [('date', 'date')#时间, ('type', 'string')#类型, ('year', 'int64')#年份, ('half_year', 'int64')#半年, ('quarter', 'int64')#季度, ('net_profit', 'float')#净利润, ('inventory_turnover', 'float')#存货周转率]}",
+      "stockholder": "{'tag': 'stockholder'#股东, 'properties': [('name', 'string')#公司名称]}",
+      "trade": "{'tag': 'trade'#行业, 'properties': [('code', 'string')#行业代码, ('name', 'string')#行业名称]}",
+      "trade_data": "{'tag': 'trade_data'#行业数据, 'properties': [('date', 'date')#时间, ('opening_price', 'float')#开盘价, ('closing_price', 'float')#收盘价, ('maximum_price', 'float')#最高价, ('minimum_price', 'float')#最低价, ('range', 'float')#涨跌幅]}"
+    },
+    "Relations": {
+      "originate_from": "{'edge': 'originate_from'#来自,'start_tag':'stock'#股票,'end_tag':'new_stock'#新股, 'properties': ['marketing_time'#上市时间]}",
+      "is_chairman_of": "{'edge': 'is_chairman_of'#是董事长, 'start_tag':'chairman'#董事长,'end_tag':'stock'#股票,'properties': []}",
+      "is_stockholder_of": "{'edge': 'is_stockholder_of'#是股东,'start_tag':'stockholder'#股东,'end_tag':'stock'#股票, 'properties': ['shareholding_ratio'#持股比例,'circulation_shareholding_ratio'#流通持股比例]}",
+      "belong_to": "{'edge': 'belong_to'#属于, 'start_tag':'stock'#股票,'end_tag':'trade'#行业,'properties': []}",
+      "hold": "{'edge': 'hold'#持有,'start_tag':'fund'#基金,'end_tag':'stock'#股票, 'properties': ['position_ratio'#持仓比例,'position_amount'#持仓金额]}",
+      "manage": "{'edge': 'manage'#管理,'start_tag':'manager'#基金经理人,'end_tag':'fund'#基金, 'properties': []}",
+      "involve_stock": "{'edge': 'involve_stock'#涉及股票, 'start_tag':'stock'#股票,'end_tag':'information'#资讯,'properties': ['tendency'#趋势,1表示正，0表示负]}",
+      "involve_fund": "{'edge': 'involve_fund'#涉及基金, 'start_tag':'fund'#基金,'end_tag':'information'#资讯,'properties': ['tendency'#趋势,1表示正，0表示负]}",
+      "associate": "{'edge': 'associate'#关联, 'start_tag':'stock'#股票,'end_tag':'industry'#产业,'properties': []}",
+      "affect": "{'edge': 'affect'#影响, 'start_tag':'industry'#（上游）产业,'end_tag':'industry'#（下游）产业,'properties': []}",
+      "has_stock_data": "{'edge': 'has_stock_data'#有股票数据, 'start_tag':'stock'#股票,'end_tag':'stock_data'#股票数据,'properties': []}",
+      "has_stock_financial_information": "{'edge': 'has_stock_financial_information'#有股票财务信息,'start_tag':'stock'#股票,'end_tag':'stock_financial_information'#股票财务信息, 'properties': []}",
+      "has_trade_data": "{'edge': 'has_trade_data'#有行业数据,'start_tag':'trade'#行业,'end_tag':'trade_data'#行业数据, 'properties': []}"
+    }
+  }
+}
