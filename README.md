@@ -10,4 +10,4 @@ A NL2GQL dataset.
 Given the scarcity of high-quality open-source NL2GQL datasets based on nGQL syntax, we developed StockGQL, a dataset constructed from a financial market graph database, which will be released publicly for future researches.
 
 source_data:
-https://drive.google.com/file/d/1ZKO3pzzYerGiCqNhhxBqHjdkstzhtRcf/view?usp=drive_link
+https://drive.google.com/file/d/1ZKO3pzzYerGiCqNhhxBqHjdkstzhtRcf/view?usp=drive_link （This is the first version of the dataset, which is relatively easy. We are about to release a second version that is more complex, conversational, and aligned with real-world scenarios.）
